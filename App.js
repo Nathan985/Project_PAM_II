@@ -23,7 +23,7 @@ const AppNavigator = createStackNavigator({
 
 }, {/*STYLE*/
   defaultNavigationOptions:{
-    title: 'Séries',
+    title: 'Calculadora do Amor',
     headerTintColor: '#fff',
     headerStyle: {
       backgroundColor: '#DC143C',

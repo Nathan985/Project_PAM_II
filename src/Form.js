@@ -55,14 +55,14 @@ export default class LoginPage extends Component {
                     title="Calcular"
                     type="solid"
                     buttonStyle={styles.ButtonStyle}
-                    onPress={() => {console.log('Click'); () => this.props.navigation.navigate('Result', PeoplesParams) }}
+                    onPress={() => {
+                        //console.log("CLICK");
+                        this.props.navigation.navigate('Result', { JSON_Infos: PeoplesParams })
+                    }}
                 />
             </View>
         )
-
     }
-
-
 }
 
 const styles = StyleSheet.create({
