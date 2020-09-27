@@ -38,6 +38,8 @@ export default class LoginPage extends Component {
     }
 
     render() {
+
+        const PeoplesParams = [this.state.PeopleOne, this.state.PeopleTwo]
         return (
             <View style={styles.Container}>
                 <Text style={styles.Title}>Veja se o @ é o amor da sua vida!</Text>
@@ -48,16 +50,16 @@ export default class LoginPage extends Component {
                 <FormRow>
                     <TextInput onChange={event => this.HandlerChange(event, 2)} style={styles.TextInput} placeholder="Pessoa 2" ></TextInput>
                 </FormRow>
-                    <Button
-                        // background= "#DC143C"
-                        title="Calcular"
-                        type="solid"
-                        buttonStyle={styles.ButtonStyle}
-                        onPress={() => {console.log(this.state.PeopleOne)}}
-                    />
+                <Button
+                    // background= "#DC143C"
+                    title="Calcular"
+                    type="solid"
+                    buttonStyle={styles.ButtonStyle}
+                    onPress={() => {console.log('Click'); () => this.props.navigation.navigate('Result', PeoplesParams) }}
+                />
             </View>
         )
-        
+
     }
 
 

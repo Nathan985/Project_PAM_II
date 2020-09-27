@@ -2,6 +2,7 @@ import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 
 import Form from './src/Form'
+import ResultAPI from './src/ResultadoApi'
 
 // Controle de navegções
 
@@ -11,6 +12,12 @@ const AppNavigator = createStackNavigator({
     screen: Form,
     navigationOptions: {
       title: 'Calculadora do Amor'
+    }
+  },
+  'Result': {
+    screen: ResultAPI,
+    navigationOptions: {
+      title: 'Resultados'
     }
   }
 
