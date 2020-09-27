@@ -1,62 +1,36 @@
-// IMPORTS
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Header from './src/Header';
-import FormJs from './src/Form';
+import { createAppContainer } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
 
-// CLASS APP
-export default class App extends React.Component {
+import Form from './src/Form'
 
-  constructor(props) {
-    super(props)
+// Controle de navegções
 
-    this.state = {
+const AppNavigator = createStackNavigator({
 
-      datails: {}
-
+  'Main': {
+    screen: Form,
+    navigationOptions: {
+      title: 'Calculadora do Amor'
     }
   }
 
-  componentDidMount(peoples) {
-
-    
+}, {/*STYLE*/
+  defaultNavigationOptions:{
+    title: 'Séries',
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#DC143C',
+      borderBottomWidth: 5,
+      borderBottomColor: '#c5c5c5',
+    },
+    headerTitleStyle:{
+      color: '#fff',
+      fontSize: 30,
+      textAlign: "center"
+    }
   }
+})
 
-  render() {
-    return (
+const AppContainer = createAppContainer(AppNavigator);
 
-      <View>
-        {<Header />}
-        {<FormJs/>}
-      </View>
-
-    );
-  }
-
-}
-
-// export default function App() {
-//     return (
-//         <View style={styles.container}>
-//             <Text>MedWork!</Text>
-//             <StatusBar style="auto" />
-//         </View>
-//     );
-// }
-
-// render(){
-//     return(
-//         <View>
-//             {<Header/>}
-//         </View>
-//     );
-// }
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         backgroundColor: '#fff',
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//     },
-// });
+export default AppContainer;

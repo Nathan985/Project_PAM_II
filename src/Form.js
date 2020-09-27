@@ -1,56 +1,94 @@
 import React, { Component } from 'react';
-import { TextInput, StyleSheet, View, Text } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { color } from 'react-native-reanimated';
 
-const UselessTextInput = () => {
+import FormRow from './Components/FormRow';
 
-    return (
-        <View style={Style.Container}>
-            <Text style={Style.TextStyle}>Pessoa 1</Text>
-            <TextInput key="PeopleOne"
-                style={Style.InputStyle}
-            />
-            <Text style={Style.TextStyle}>Pessoa 2</Text>
-            <TextInput key="PeopleTwo"
-                style={Style.InputStyle}
-            />
-            <Button
-                icon={
-                    <Icon
-                        name="arrow-right"
-                        size={15}
-                        color="white"
+export default class LoginPage extends Component {
+
+    constructor(props) {
+
+        super(props)
+
+        this.state = {
+
+            PeopleOne: "",
+            PeopleTwo: ""
+
+        }
+
+    }
+
+    HandlerChange(event, type) {
+        const valor = event.nativeEvent.text
+
+        if (type === 1) {
+            this.setState({
+
+                PeopleOne: valor
+            })
+        }
+        if (type === 2) {
+            this.setState({
+
+                PeopleTwo: valor
+            })
+        }
+    }
+
+    render() {
+        return (
+            <View style={styles.Container}>
+                <Text style={styles.Title}>Veja se o @ é o amor da sua vida!</Text>
+                <FormRow>
+                    <TextInput onChange={event => this.HandlerChange(event, 1)} style={styles.TextInput} placeholder="Pessoa 1"></TextInput>
+                </FormRow>
+
+                <FormRow>
+                    <TextInput onChange={event => this.HandlerChange(event, 2)} style={styles.TextInput} placeholder="Pessoa 2" ></TextInput>
+                </FormRow>
+                    <Button
+                        // background= "#DC143C"
+                        title="Calcular"
+                        type="solid"
+                        buttonStyle={styles.ButtonStyle}
+                        onPress={() => {console.log(this.state.PeopleOne)}}
                     />
-                }
-                title="Button with icon component"
-            />
-        </View>
-    );
+            </View>
+        )
+        
+    }
+
+
 }
 
-const Style = StyleSheet.create({
-    Container: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 50,
-        textAlign: "left"
-    },
-    InputStyle: {
-        height: 40,
-        borderColor: 'black',
-        borderWidth: 1,
-        aspectRatio: 7,
-    },
-    TextStyle: {
-        marginTop: 50,
-        fontSize: 30,
-        color: 'black'
+const styles = StyleSheet.create({
+    TextInput: {
+        paddingLeft: 5,
+        paddingRight: 5,
+        paddingBottom: 10,
+        aspectRatio: 10
     },
     ButtonStyle: {
-        marginTop: 30,
-        aspectRatio: 6,
+        color: '#fff',
+        // borderColor: '#DC143C'
+        marginTop: 15,
+        backgroundColor: '#DC143C',
+        aspectRatio: 8
+    },
+    Container: {
+        marginTop: 115,
+        alignItems: 'center'
+        // flexDirection: "row"
+    },
+    ContainerTouch: {
+        alignItems: 'center'
+        // flexDirection: "row"
+    },
+    Title: {
+        marginBottom: 25,
+        fontSize: 28,
+        fontWeight: "bold"
     }
 })
-
-export default UselessTextInput;
