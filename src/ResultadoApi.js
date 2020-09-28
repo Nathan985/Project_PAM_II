@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios'
-import { View, Text } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 
 export default class ResultadoApi extends React.Component{
 
@@ -19,9 +19,10 @@ export default class ResultadoApi extends React.Component{
     render(){
 
         return(
-            <View>
-                <Text>{ this.state.Porcentagem }%</Text>
-                <Text>{ this.state.Mensagem }</Text>
+            <View style={styles.Container} >
+                <Image style={styles.ImageResult} source = {require('./IMG/Coracao.png')} />
+                <Text style={styles.PctResult} >{ this.state.Porcentagem }%</Text>
+                <Text style={styles.MsgResult} >{ this.state.Mensagem }</Text>
             </View>
         )
     }
@@ -61,3 +62,32 @@ export default class ResultadoApi extends React.Component{
     }
 
 }
+
+const styles = StyleSheet.create({
+
+    ImageResult: {
+        width: 450,
+        height: 300,
+        resizeMode: 'stretch',
+    },
+    Container: {
+        alignItems: 'center',
+        alignContent: 'center',
+        marginTop: 120
+    },
+    MsgResult: {
+        position: 'absolute',
+        marginTop: 130,
+        fontSize: 20,
+        fontWeight: "bold",
+        color: '#fff'
+    },
+    PctResult: {
+        position: 'absolute',
+        marginTop: 110,
+        fontSize: 20,
+        fontWeight: "bold",
+        color: '#fff'
+    }
+
+})
